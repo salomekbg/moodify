@@ -20,6 +20,8 @@ $(document).ready(function() {
   })
 })
 
+const FLICKR_API_KEY = config.FLICKR_API_KEY
+
 function getPhotos() {
   if (store.songs[store.songs.length - 1].title !== "") {
     var tags = store.songs[store.songs.length - 1].title
@@ -29,7 +31,7 @@ function getPhotos() {
 
   $.ajax({
       method: "GET",
-      url: `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=81501bbe9c20b4cd761970acfb46108f&tags=${tags}&safe_search=1&format=json&nojsoncallback=1`
+      url: `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKR_API_KEY}&tags=${tags}&safe_search=1&format=json&nojsoncallback=1`
     }).done(function(data) {
      var photosArray = data.photos.photo
 
